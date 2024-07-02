@@ -1,0 +1,32 @@
+public class Solution
+{
+    public static int size(Node head){
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        return count;
+    } 
+    public static Node removeKthNode(Node head, int K)
+    {
+        // Write your code here.
+        if(size(head) == K){
+            head=head.next;
+            return head;
+        }
+
+        Node prev=head;
+        int i=1;
+        int iToFind=size(head)-K;
+        while(i<iToFind){
+            prev=prev.next;
+            i++;
+        }
+        prev.next=prev.next.next;
+        
+
+        return head;
+    }
+}
