@@ -1,0 +1,24 @@
+public class Solution {
+    public static Node<Integer> addNodes(Node<Integer> head, int n, int m) {
+        // Write your code here.
+        Node temp=head;
+        while(temp!=null){
+            for(int i=0;i<m && temp!=null;i++){
+                temp=temp.next;
+            }
+            if(temp==null){
+                return head;
+            }
+            int sum=temp.data;
+            for(int i=0;i<n-1 && temp.next!=null;i++){
+                temp=temp.next;
+                sum += temp.data;
+            }
+            Node node = new Node(sum);
+            node.next = temp.next;
+			temp.next = node;
+			temp = node.next;
+        }
+        return head;
+    }
+}
